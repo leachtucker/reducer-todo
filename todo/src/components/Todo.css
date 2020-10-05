@@ -1,0 +1,13 @@
+.todo {
+    padding: 2%;
+    margin: 10px;
+    text-align: center;
+}
+
+.completed {
+    color: green;
+}
+
+h3 {
+    display: inline;
+}
