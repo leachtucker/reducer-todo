@@ -6,7 +6,8 @@ import { Button, TextField } from '@material-ui/core'
 import './TodoForm.css'
 
 const initialFormValues = {
-    taskName: ''
+    taskName: '',
+    dueDate: '2020-10-13'
 }
 
 export default class TodoForm extends React.Component {
@@ -14,19 +15,21 @@ export default class TodoForm extends React.Component {
         super(props);
 
         this.state = {
-            taskName: initialFormValues.taskName
+            taskName: initialFormValues.taskName,
+            dueDate: initialFormValues.dueDate
         };
     }
 
     // EVENT HANDLERS //
     onSubmit = (evt) => {
         evt.preventDefault();
-        const newTask = {item: this.state.taskName, completed: false, id: uuid()}
+        const newTask = {item: this.state.taskName, completed: false, id: uuid(), dueDate: this.state.dueDate}
         this.props.dispatch({ type: 'ADD_TODO', payload: newTask });
 
         this.setState({
             ...this.state,
             taskName: initialFormValues.taskName,
+            dueDate: initialFormValues.dueDate
         })
     }
 
@@ -43,6 +46,7 @@ export default class TodoForm extends React.Component {
             <div className='form-container'>
                 <form onSubmit={this.onSubmit}>
                     <TextField name='taskName' value={this.state.taskName} onChange={this.onChange} type='text' placeholder='Task title' required />
+                    <TextField name='dueDate' value={this.state.dueDate} onChange={this.onChange} type='date' required />
                     <Button type='submit' variant='contained' color='primary'>Add Task</Button>
                     <Button onClick={() => {this.props.dispatch({ type: 'CLEAR_COMPLETED' });}} variant='contained' color='primary'>Clear Completed</Button>
                 </form>

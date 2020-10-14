@@ -4,17 +4,20 @@ const initialState = {
       {
         item: 'Learn about reducers',
         completed: false,
-        id: 3892987589
+        id: 3892987589,
+        dueDate: '10/11/2020'
       },
       {
         item: 'Take trash out',
         completed: false,
-        id: 3892987999
+        id: 3892987999,
+        dueDate: '10/20/2020'
       },
       {
         item: 'Wash clothes',
         completed: false,
-        id: 3892988632
+        id: 3892988632,
+        dueDate: '10/13/2020'
       },
     ]
 }
@@ -22,7 +25,6 @@ const initialState = {
 const reducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TODO':
-
             return {
                 ...state,
                 todos: [
